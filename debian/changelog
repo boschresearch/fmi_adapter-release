@@ -1,0 +1,7 @@
+ros-melodic-fmi-adapter (1.0.0-0bionic) bionic; urgency=high
+
+  * Initial version.
+
+ -- Ralph Lange <ralph.lange@de.bosch.com>  Thu, 12 Jul 2018 22:00:00 -0000
+
+
