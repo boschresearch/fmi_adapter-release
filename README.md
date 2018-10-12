@@ -2,12 +2,12 @@
 
 This repository provides the fmi_adapter package for wrapping *functional mockup units (FMUs)* for co-simulation of physical models into ROS nodes. FMUs are defined in the [FMI standard](http://fmi-standard.org/) and can be created with a variety of modeling and simulation tools, including [Dymola](http://www.3ds.com/products-services/catia/products/dymola), [MATLAB/Simulink](https://www.mathworks.com/products/simulink.html), [OpenModelica](https://www.openmodelica.org/), [SimulationX](https://www.simulationx.de/), and [Wolfram System Modeler](http://www.wolfram.com/system-modeler/).
 
-fmi_adapter provides a library with convenience functions based on common ROS types to load an FMU during runtime, retrieve the input, output, and parameter names,  set timestamped input values, run the FMU's numeric solver, and query the resulting output.
+fmi_adapter provides a library with convenience functions based on common ROS types to load an FMU during runtime, retrieve the input, output, and parameter names, set timestamped input values, run the FMU's numeric solver, and query the resulting output.
 
 In detail, this repository contains two ROS packages:
 
 *   [fmi_adapter](fmi_adapter/) provides a generic library and ROS node for loading and running FMUs in ROS-based applications.
-*   [fmi_adapter_examples](fmi_adapter_examples/) provides a tiny example for the use of fmi_adapter.
+*   [fmi_adapter_examples](fmi_adapter_examples/) provides small examples for the use of fmi_adapter.
 
 Technical information on the interfaces and use of these packages is given in the README.md files in the corresponding subfolders.
 
@@ -37,7 +37,9 @@ For a list of other open source components included in fmi_adapter, see the file
 *   Linters:
     *   The [cpplint](https://github.com/google/styleguide/tree/gh-pages/cpplint) tool is used to detect common flaws and problems in C++ code. The rule configuration is contained in [CPPLINT.cfg](CPPLINT.cfg).
     *   The CMakeLists.txt and package description files are checked with [catkin_lint](http://wiki.ros.org/catkin_lint).
-*   Unit tests: We already have a set of unit tests using rostest and a simple FMU. We plan to release them in the next weeks.
+*   Unit tests:
+    *   Unit tests based on [rostest](http://wiki.ros.org/rostest)+[gtest](https://github.com/google/googletest) are located in the [fmi_adapter/test](fmi_adapter/test) folder.
+    *   The unit tests use an FMU created with the [FMU SDK](https://www.qtronic.de/en/fmusdk.html) by QTronic GmbH, cf. [3rd-party-licenses.txt](3rd-party-licenses.txt).
 
 The [pre-commit.hook](pre-commit.hook) file provides a client-side commit hook to check the conformance with the coding style and the linters during every commit. In case of a finding by clang-format or one of the linters, the commit will be rejected. To set this client-side commit hook up, please run `ln -s ../../pre-commit.hook .git/hooks/pre-commit` from the local repository root.
 
