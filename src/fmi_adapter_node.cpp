@@ -35,7 +35,11 @@ int main(int argc, char** argv) {
     throw std::runtime_error("Parameter 'fmu_path' not specified!");
   }
 
-  fmi_adapter::FMIAdapter adapter(fmuPath);
+  double stepSizeAsDouble = 0.0;
+  n.getParam("step_size", stepSizeAsDouble);
+  ros::Duration stepSize(stepSizeAsDouble);
+
+  fmi_adapter::FMIAdapter adapter(fmuPath, stepSize);
   for (const std::string name : adapter.getParameterNames()) {
     ROS_DEBUG("FMU has parameter '%s'", name.c_str());
   }
@@ -58,16 +62,24 @@ int main(int argc, char** argv) {
     publishers[name] = n.advertise<std_msgs::Float64>(rosifiedName, 1000);
   }
 
-  ros::Timer timer = n.createTimer(ros::Duration(0.01), [&](const ros::TimerEvent& event) {
-    adapter.calcUntil(event.current_expected);
+  adapter.exitInitializationMode(ros::Time::now());
+
+  double updatePeriod = 0.01;  // Default is 0.01s
+  n.getParam("update_period", updatePeriod);
+
+  ros::Timer timer = n.createTimer(ros::Duration(updatePeriod), [&](const ros::TimerEvent& event) {
+    if (adapter.getSimulationTime() < event.current_expected) {
+      adapter.doStepsUntil(event.current_expected);
+    } else {
+      ROS_INFO("Simulation time %f is greater than timer's time %f. Is your step size to large?",
+               adapter.getSimulationTime().toSec(), event.current_expected.toSec());
+    }
     for (const std::string& name : adapter.getOutputVariableNames()) {
       std_msgs::Float64 msg;
       msg.data = adapter.getOutputValue(name);
       publishers[name].publish(msg);
     }
   });
-
-  adapter.exitInitializationMode(ros::Time::now());
 
   ros::spin();
 

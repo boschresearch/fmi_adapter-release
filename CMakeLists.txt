@@ -14,7 +14,7 @@ set(FMILibraryProject_LIB_DIR "${INSTALL_DIR}/src/install/lib")
 
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-add_compile_options(-std=c++11 -Wall -Wextra -Wpedantic -Weffc++ -Werror)
+add_compile_options(-std=c++11 -Wall -Wextra)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -126,6 +126,8 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
+#catkin_lint: ignore_once missing_directory
+#catkin_lint: ignore_once external_directory
 include_directories(
   include
   SYSTEM ${catkin_INCLUDE_DIRS} ${FMILibraryProject_INCLUDE_DIR}
@@ -134,6 +136,16 @@ include_directories(
 ## Declare library from FMILibraryProject. Ensure globally unique name by prepending project name.
 add_library(${PROJECT_NAME}_fmilib STATIC IMPORTED)
 set_target_properties(${PROJECT_NAME}_fmilib PROPERTIES IMPORTED_LOCATION ${FMILibraryProject_LIB_DIR}/libfmilib.a)
+
+
+### Set strict compiler settings for all source files, but not for test files due to warnings raised by GTest headers.
+set_source_files_properties(
+  include/${PROJECT_NAME}/FMIAdapter.h
+  src/${PROJECT_NAME}/FMIAdapter.cpp
+  src/${PROJECT_NAME}_node.cpp
+  PROPERTIES COMPILE_FLAGS "-Wpedantic -Weffc++ -Werror"
+)
+
 
 ## Declare a C++ library
 add_library(${PROJECT_NAME}
@@ -211,10 +223,14 @@ install(DIRECTORY launch/
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_fmi_adapter_test.cpp)
-# if(TARGET ${PROJECT_NAME}-test)
-#   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
-# endif()
+if(CATKIN_ENABLE_TESTING)
+  file(GLOB_RECURSE myTestCppFiles "test/*.cpp")
+  set(GTEST_LIBRARY gtest)
+  find_package(rostest REQUIRED)
+  add_rostest_gtest("${PROJECT_NAME}_test" test/${PROJECT_NAME}.test ${myTestCppFiles})
+  target_include_directories("${PROJECT_NAME}_test" PRIVATE "test" SYSTEM PUBLIC ${catkin_INCLUDE_DIRS})
+  target_link_libraries("${PROJECT_NAME}_test" ${PROJECT_NAME} ${catkin_LIBRARIES} stdc++ pthread m)
+endif()
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
