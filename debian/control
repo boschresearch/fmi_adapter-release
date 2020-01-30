@@ -1,0 +1,12 @@
+Source: ros-melodic-fmi-adapter-examples
+Section: misc
+Priority: optional
+Maintainer: Ralph Lange <ralph.lange@de.bosch.com>
+Build-Depends: debhelper (>= 9.0.0), ros-melodic-catkin
+Homepage: http://wiki.ros.org/fmi_adapter
+Standards-Version: 3.9.2
+
+Package: ros-melodic-fmi-adapter-examples
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-melodic-fmi-adapter, ros-melodic-roscpp, ros-melodic-rqt-plot
+Description: Provides small examples for use of the fmi_adapter package

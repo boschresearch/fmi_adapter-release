@@ -1,0 +1,26 @@
+ros-melodic-fmi-adapter-examples (1.0.3-1stretch) stretch; urgency=high
+
+  * Updated instructions for FMU export from OpenModelica.
+  * Created explicit output revolute1_angle.
+
+ -- Ralph Lange <ralph.lange@de.bosch.com>  Wed, 29 Jan 2020 23:00:00 -0000
+
+ros-melodic-fmi-adapter-examples (1.0.2-1stretch) stretch; urgency=high
+
+  * Added two sample FMUs with corresponding launch files.
+
+ -- Ralph Lange <ralph.lange@de.bosch.com>  Thu, 11 Oct 2018 22:00:00 -0000
+
+ros-melodic-fmi-adapter-examples (1.0.1-1stretch) stretch; urgency=high
+
+  * Throwing runtime_error in case of failed fmi2 function call in FMIAdapter.
+
+ -- Ralph Lange (CR/AEE1) <ralph.lange@de.bosch.com>  Sun, 15 Jul 2018 22:00:00 -0000
+
+ros-melodic-fmi-adapter-examples (1.0.0-1stretch) stretch; urgency=high
+
+  * Initial version.
+
+ -- Ralph Lange (CR/AEE1) <ralph.lange@de.bosch.com>  Thu, 12 Jul 2018 22:00:00 -0000
+
+
