@@ -1,0 +1,31 @@
+ros-melodic-fmi-adapter (1.0.3-1stretch) stretch; urgency=high
+
+  * Fixed sporadic exception in case of small external steps.
+  * Updated to FMILibrary version 2.1 and to new location of FMILibrary sources.
+  * Fixed fmuLocation argument for fmi2_import_instantiate.
+
+ -- Ralph Lange <ralph.lange@de.bosch.com>  Wed, 29 Jan 2020 23:00:00 -0000
+
+ros-melodic-fmi-adapter (1.0.2-1stretch) stretch; urgency=high
+
+  * Added parameter to configure update period of fmi_adapter node.
+  * Introduced functions for single step and replaced calcUntil with doStepsUntil.
+  * Enable automatic use of default experiment step-size from FMU in FMIAdapter ctor.
+  * Added function to query default experiment step-size given in the FMU.
+  * Added step_size parameter and function to query whether the FMU supports a variable communication step size.
+
+ -- Ralph Lange <ralph.lange@de.bosch.com>  Thu, 11 Oct 2018 22:00:00 -0000
+
+ros-melodic-fmi-adapter (1.0.1-1stretch) stretch; urgency=high
+
+  * Throwing runtime_error in case of failed fmi2 function call.
+
+ -- Ralph Lange <ralph.lange@de.bosch.com>  Sun, 15 Jul 2018 22:00:00 -0000
+
+ros-melodic-fmi-adapter (1.0.0-1stretch) stretch; urgency=high
+
+  * Initial version.
+
+ -- Ralph Lange <ralph.lange@de.bosch.com>  Thu, 12 Jul 2018 22:00:00 -0000
+
+
