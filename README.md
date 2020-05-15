@@ -1,3 +1,28 @@
+## fmi_adapter (noetic) - 1.0.3-1
+
+The packages in the `fmi_adapter` repository were released into the `noetic` distro by running `/usr/bin/bloom-release --rosdistro noetic --track noetic fmi_adapter` on `Fri, 15 May 2020 06:55:04 -0000`
+
+These packages were released:
+- `fmi_adapter`
+- `fmi_adapter_examples`
+
+Version of package(s) in repository `fmi_adapter`:
+
+- upstream repository: https://github.com/boschresearch/fmi_adapter.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `1.0.3-1`
+
+Versions of tools used:
+
+- bloom version: `0.9.7`
+- catkin_pkg version: `0.4.20`
+- rosdep version: `0.19.0`
+- rosdistro version: `0.8.1`
+- vcstools version: `0.1.42`
+
+
 ## fmi_adapter (melodic) - 1.0.3-1
 
 The packages in the `fmi_adapter` repository were released into the `melodic` distro by running `/usr/bin/bloom-release --rosdistro melodic --track melodic fmi_adapter --edit` on `Thu, 30 Jan 2020 08:42:03 -0000`
