@@ -1,0 +1,12 @@
+Source: ros-noetic-fmi-adapter
+Section: misc
+Priority: optional
+Maintainer: Ralph Lange <ralph.lange@de.bosch.com>
+Build-Depends: debhelper (>= 9.0.0), git, ros-noetic-catkin, ros-noetic-roscpp, ros-noetic-rostest, ros-noetic-std-msgs
+Homepage: http://wiki.ros.org/fmi_adapter
+Standards-Version: 3.9.2
+
+Package: ros-noetic-fmi-adapter
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-noetic-roscpp, ros-noetic-std-msgs
+Description: Wraps FMUs for co-simulation
