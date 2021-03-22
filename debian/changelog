@@ -1,0 +1,32 @@
+ros-noetic-fmi-adapter-examples (1.0.4-1focal) focal; urgency=high
+
+  * Ensured same relative location for sample FMUs in devel and install layout.
+
+ -- Ralph Lange <ralph.lange@de.bosch.com>  Sun, 21 Mar 2021 23:00:00 -0000
+
+ros-noetic-fmi-adapter-examples (1.0.3-1focal) focal; urgency=high
+
+  * Updated instructions for FMU export from OpenModelica.
+  * Created explicit output revolute1_angle.
+
+ -- Ralph Lange <ralph.lange@de.bosch.com>  Wed, 29 Jan 2020 23:00:00 -0000
+
+ros-noetic-fmi-adapter-examples (1.0.2-1focal) focal; urgency=high
+
+  * Added two sample FMUs with corresponding launch files.
+
+ -- Ralph Lange <ralph.lange@de.bosch.com>  Thu, 11 Oct 2018 22:00:00 -0000
+
+ros-noetic-fmi-adapter-examples (1.0.1-1focal) focal; urgency=high
+
+  * Throwing runtime_error in case of failed fmi2 function call in FMIAdapter.
+
+ -- Ralph Lange <ralph.lange@de.bosch.com>  Sun, 15 Jul 2018 22:00:00 -0000
+
+ros-noetic-fmi-adapter-examples (1.0.0-1focal) focal; urgency=high
+
+  * Initial version.
+
+ -- Ralph Lange <ralph.lange@de.bosch.com>  Thu, 12 Jul 2018 22:00:00 -0000
+
+
